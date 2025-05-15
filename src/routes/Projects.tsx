@@ -121,7 +121,7 @@ const Projects = () => {
                     </a>
                   </Button>
                 )}
-                {/* If you have a dedicated project details page */}
+                {/* whenever i have a dedicated project details page */}
                 {/* <Button asChild>
                 <Link to={`/projects/${project.id}`}>View Details</Link>
               </Button> */}
