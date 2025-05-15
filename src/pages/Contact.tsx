@@ -1,27 +1,27 @@
-"use client";
-
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const Contact = () => {
   const myEmail = "meshackkiprono12@gmail.com";
-  const subjectPrefix = "Inquiry from Portfolio";
-  const bodyPrefix =
-    "Hi Meshack,\n\nI visited your portfolio and would like to connect.";
+  // const subjectPrefix = "Inquiry from Portfolio"; // Currently not used
+  // const bodyPrefix = // Currently not used
+  //   "Hi Meshack,\n\nI visited your portfolio and would like to connect.";
   const [isDirectEmail, setIsDirectEmail] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const [submissionStatus, setSubmissionStatus] = useState(null); // 'sending', 'success', 'error'
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "sending" | "success" | "error" | null
+  >(null); // 'sending', 'success', 'error'
 
   const handleButtonClick = () => {
     setIsDirectEmail(true);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setSubmissionStatus("sending");
 
