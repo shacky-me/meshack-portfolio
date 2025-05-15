@@ -1,6 +1,7 @@
 import { MdArrowForward } from "react-icons/md";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import imageten from "@/assets/images/imageten.jpg"; // Adjust the path as necessary
 
 const About = () => {
   const frontendSkills = [
@@ -63,7 +64,7 @@ const About = () => {
           <div className="lg:w-1/2 flex justify-center">
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-xl">
               <img
-                src="/src/assets/images/imageten.jpg"
+                src={imageten}
                 alt="profile"
                 className="object-cover w-full h-full"
               />
