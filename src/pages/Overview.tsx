@@ -1,5 +1,6 @@
 import ButtonOutline from "@/components/Button";
 import { MdArrowForward } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Overview = () => {
   return (
@@ -31,7 +32,7 @@ const Overview = () => {
           </p>
 
           <div className="mt-8 space-x-4 flex justify-center lg:justify-start">
-            <a href="#">
+            <Link to="/projects">
               <ButtonOutline
                 text={
                   <>
@@ -41,8 +42,8 @@ const Overview = () => {
                 }
                 className="bg-black text-white hover:bg-gray-900 hover:text-white dark:bg-indigo-400 dark:text-white dark:border-indigo-400 dark:hover:bg-indigo-300 shadow-md"
               />
-            </a>
-            <a href="#">
+            </Link>
+            <a href="#contact">
               <ButtonOutline
                 text="Talk to Me"
                 className="bg-white text-indigo-600 border-indigo-600 hover:bg-indigo-50 hover:border-indigo-50 dark:bg-slate-700 dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-slate-600 shadow-md"

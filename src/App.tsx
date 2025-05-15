@@ -1,18 +1,25 @@
-import Navbar from "./components/Navbar";
-import About from "./pages/About";
-import Overview from "./pages/Overview";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import Work from "./pages/Work";
-import Contact from "./pages/Contact";
+
+// Pages
+import Home from "./pages/Home";
+import Backstage from "./routes/Backstage";
+import Projects from "./routes/Projects";
+import Layout from "./pages/Layout";
 
 const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Navbar />
-      <Overview />
-      <About />
-      <Work />
-      <Contact />
+      <BrowserRouter>
+        {/* Route-based content */}
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="backstage" element={<Backstage />} />
+            <Route path="projects" element={<Projects />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

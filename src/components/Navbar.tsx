@@ -1,20 +1,21 @@
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useState, useEffect, useRef } from "react";
 import { ModeToggle } from "./mode-toggle";
+import { Link, useNavigate } from "react-router-dom";
 
 const navlinks = [
   { name: "Overview", href: "#overview" },
   { name: "About", href: "#about" },
   { name: "Work", href: "#work" },
-  { name: "Backstage", href: "#backstage" },
+  { name: "Backstage", href: "/backstage" },
   { name: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  // Close menu on window resize >= md
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -26,7 +27,6 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -47,32 +47,45 @@ const Navbar = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  const closeMenuAndScroll = (href: string) => {
-    setIsMenuOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+  // const closeMenuAndScroll = (href: string) => {
+  //   setIsMenuOpen(false);
+  //   const targetElement = document.querySelector(href);
+  //   if (targetElement) {
+  //     targetElement.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
+
+  const handleNavLinkClick = (href: string) => {
+    if (href.startsWith("#")) {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      navigate(href);
     }
   };
 
   return (
     <header className="fixed z-50 w-full py-4 px-6 bg-background dark:bg-background">
       <div className="flex mx-auto max-w-6xl justify-between items-center">
-        {/* Logo */}
-        <a href="/" className="italic tracking-wide text-lg">
+        <Link to="/" className="italic tracking-wide text-lg">
           Kigen Meshack
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-10 ml-auto">
           {navlinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
-              className="hover:text-[#4da187] transition duration-500 ease-in-out"
+              onClick={() => handleNavLinkClick(link.href)}
+              className="cursor-pointer hover:text-[#4da187] transition duration-500 ease-in-out"
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <a
             href="https://drive.google.com/file/d/1l3homNnhbsP-_VWLmbOff-BudVkz7QzK/view?usp=sharing"
@@ -82,13 +95,11 @@ const Navbar = () => {
           >
             Resume
           </a>
-          {/* 🌗 Theme Toggle Button */}
           <ModeToggle />
         </nav>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden ml-auto mr-2">
-          {/* 🌗 Theme Toggle Button */}
           <ModeToggle />
         </div>
         <button
@@ -125,14 +136,16 @@ const Navbar = () => {
         >
           <nav className="flex flex-col items-center gap-8 text-lg">
             {navlinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                onClick={() => closeMenuAndScroll(link.href)}
+                onClick={() => {
+                  handleNavLinkClick(link.href);
+                  setIsMenuOpen(false);
+                }}
                 className="hover:text-[#4da187] transition duration-500 ease-in-out"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
             <a
               href="https://drive.google.com/file/d/1l3homNnhbsP-_VWLmbOff-BudVkz7QzK/view?usp=sharing"
