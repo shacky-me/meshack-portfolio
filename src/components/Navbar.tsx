@@ -65,14 +65,36 @@ const Navbar = () => {
         }
       }, 100);
     } else {
-      navigate(href);
+      if (location.pathname === href) {
+        // If the current path is the same as the link's href, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate(href);
+      }
+    }
+  };
+
+  const handleLogoClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+      // No need for a timeout here as the homepage will re-render
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
     <header className="fixed z-50 w-full py-4 px-6 bg-background dark:bg-background">
       <div className="flex mx-auto max-w-6xl justify-between items-center">
-        <Link to="/" className="italic tracking-wide text-lg">
+        <Link
+          to="/"
+          className="italic tracking-wide text-lg"
+          onClick={handleLogoClick}
+        >
           Kigen Meshack
         </Link>
 

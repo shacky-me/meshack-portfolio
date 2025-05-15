@@ -1,7 +1,8 @@
 import { MdArrowForward } from "react-icons/md";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import imageten from "@/assets/images/imageten.jpg"; // Adjust the path as necessary
+import imageten from "@/assets/images/imageten.jpg";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const frontendSkills = [
@@ -55,10 +56,12 @@ const About = () => {
               interfaces, like the best writing, are the ones you don’t have to
               think twice about.
             </p>
-            <button className="bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-300">
-              Discover More
-              <MdArrowForward className="inline-block ml-2" />
-            </button>
+            <Link to="/backstage">
+              <button className="cursor-pointer bg-gray-800 text-white py-3 px-8 rounded-full hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-300">
+                Discover More
+                <MdArrowForward className="inline-block ml-2" />
+              </button>
+            </Link>
           </div>
           {/* Right Section (Image) */}
           <div className="lg:w-1/2 flex justify-center">
