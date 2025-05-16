@@ -348,7 +348,7 @@ const Backstage = () => {
                     href={resource.spotifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#00293b] hover:underline text-sm"
+                    className="text-[#0f8356] hover:underline text-sm"
                   >
                     Listen on Spotify
                   </a>
@@ -368,7 +368,7 @@ const Backstage = () => {
                     href={resource.podcastUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#00293b] hover:underline text-sm"
+                    className="text-[#0f8356] hover:underline text-sm"
                   >
                     Listen to Podcast
                   </a>
