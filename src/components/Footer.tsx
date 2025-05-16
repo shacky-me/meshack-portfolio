@@ -84,7 +84,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.instagram.com/_shacky___/"
+                href="https://www.instagram.com/_shacky/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200"
