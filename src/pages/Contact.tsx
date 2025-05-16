@@ -2,12 +2,10 @@ import { useState, type FormEvent } from "react";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const myEmail = "meshackkiprono12@gmail.com";
-  // const subjectPrefix = "Inquiry from Portfolio"; // Currently not used
-  // const bodyPrefix = // Currently not used
-  //   "Hi Meshack,\n\nI visited your portfolio and would like to connect.";
   const [isDirectEmail, setIsDirectEmail] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +13,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [submissionStatus, setSubmissionStatus] = useState<
     "sending" | "success" | "error" | null
-  >(null); // 'sending', 'success', 'error'
+  >(null);
 
   const handleButtonClick = () => {
     setIsDirectEmail(true);
@@ -24,33 +22,31 @@ const Contact = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setSubmissionStatus("sending");
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      subject,
+      message,
+    };
 
     try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, subject, message }),
-      });
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+      );
 
-      if (response.ok) {
-        setSubmissionStatus("success");
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-      } else {
-        setSubmissionStatus("error");
-        const errorData = await response.json();
-        console.error("Error sending message:", errorData);
-      }
+      setSubmissionStatus("success");
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error("EmailJS error:", error);
+      alert("Check the console for detailed EmailJS error info.");
+      console.error("EmailJS error:", error);
       setSubmissionStatus("error");
     }
   };
@@ -69,8 +65,9 @@ const Contact = () => {
         >
           Get In Touch
         </motion.h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-          {/* Contact Information */}
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -83,7 +80,7 @@ const Contact = () => {
             </div>
             <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
               <MdEmail className="h-6 w-6" />
-              <p>meshackkiprono12@gmail.com</p>
+              <p>{myEmail}</p>
             </div>
             <div className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
               <MdPhone className="h-6 w-6" />
@@ -135,6 +132,7 @@ const Contact = () => {
                     className="p-1 mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-200"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
                 </div>
                 <div>
@@ -150,6 +148,7 @@ const Contact = () => {
                     className="p-1 mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-200"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div>
@@ -165,6 +164,7 @@ const Contact = () => {
                     className="p-1 mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-200"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
+                    required
                   />
                 </div>
                 <div>
@@ -180,6 +180,7 @@ const Contact = () => {
                     className="mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-slate-700 dark:text-gray-200"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    required
                   />
                 </div>
                 <Button
