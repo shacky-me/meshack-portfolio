@@ -6,7 +6,7 @@ const Overview = () => {
   return (
     <section
       id="overview"
-      className="md:min-h-screen py-20 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 flex items-center justify-center"
+      className="md:min-h-screen py-10 pt-25 md:py-20 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 flex items-center justify-center"
     >
       <div className="container mx-auto px-6 md:px-20 flex flex-col lg:flex-row justify-around items-center gap-10">
         <div className="md:w-[70%] text-center lg:text-left">

@@ -27,7 +27,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen py-20 bg-gray-50 dark:bg-slate-950 transition-colors duration-300"
+      className="min-h-screen py-5 md:py-20 bg-gray-50 dark:bg-slate-950 transition-colors duration-300"
     >
       <div className="container mx-auto px-6 md:px-20">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-24">
