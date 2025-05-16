@@ -7,89 +7,191 @@ const Backstage = () => {
 
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
-    setSearchTerm(""); // To Reset search when category changes
+    setSearchTerm(""); // Reset search when category changes
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  // Dummy data - to be replaced with actual data fetching or content
   const resources = [
     {
       id: 1,
       category: "Books",
-      title: "The Hitchhiker's Guide to the Galaxy",
-      author: "Douglas Adams",
+      title: "The Great Gatsby",
+      author: "F. Scott Fitzgerald",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg/960px-The_Great_Gatsby_Cover_1925_Retouched.jpg",
     },
-    { id: 2, category: "Books", title: "Sapiens", author: "Yuval Noah Harari" },
+    {
+      id: 2,
+      category: "Books",
+      title: "To Kill a Mockingbird",
+      author: "Harper Lee",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg/250px-To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg",
+    },
+
     {
       id: 3,
-      category: "Poems",
-      title: "The Road Not Taken",
-      author: "Robert Frost",
+      category: "Books",
+      title: "Women of Color in Tech",
+      author: "Susanne Tedrick",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw-roof6wl3JNMZTENueDma9bnWIWFdJuv7w&s",
     },
-    { id: 4, category: "Poems", title: "If", author: "Rudyard Kipling" },
+    {
+      id: 4,
+      category: "Books",
+      title: "Surrounded by Idiots",
+      author: "Thomas Erikson",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ruXE5Y4wcmcr7j6wIRP4BtqJpE4vbgI9NA&sa",
+    },
     {
       id: 5,
-      category: "Music",
-      title: "Kind of Blue",
-      artist: "Miles Davis",
-      spotifyUrl: "#",
+      category: "Books",
+      title: "Surrounded by Narcissists",
+      author: "Thomas Erikson",
+      imageUrl:
+        "https://s3.refhub.ir/images/thumb/Surrounded_by_Narcissists_2557.webp",
     },
     {
       id: 6,
-      category: "Music",
-      title: "OK Computer",
-      artist: "Radiohead",
-      spotifyUrl: "#",
+      category: "Books",
+      title: "Everything Is F*cked: A Book About Hope",
+      author: "Mark Manson",
+      imageUrl:
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550685003i/43808723.jpg",
     },
     {
       id: 7,
-      category: "Documentaries",
-      title: "Planet Earth",
-      director: "Alastair Fothergill",
+      category: "Books",
+      title: "The Subtle Art of Not Giving a F*ck",
+      author: "Mark Manson",
+      imageUrl:
+        "https://markmanson.net/wp-content/themes/mm-main/images/books-subtle-art.png",
     },
     {
       id: 8,
-      category: "Podcasts",
-      title: "The Daily",
-      producer: "The New York Times",
-      podcastUrl: "#",
+      category: "Books",
+      title: "The Alchemist",
+      author: "Paulo Coelho",
+      imageUrl:
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
     },
     {
       id: 9,
       category: "Books",
-      title: "Project Hail Mary",
-      author: "Andy Weir",
+      title:
+        "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+      author: "James Clear",
+      imageUrl:
+        "https://jamesclear.com/wp-content/uploads/2024/06/atomic-habits-dots.png",
     },
+
+    // Additional resources (Poems, Music, Documentaries, Podcasts)
+    // Poems
     {
       id: 10,
       category: "Poems",
-      title: "Ozymandias",
-      author: "Percy Bysshe Shelley",
+      title: "And Still I Rise",
+      author: "Maya Angelou",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/And_Still_I_Rise_front_cover%2C_1978_first_edition.jpg/250px-And_Still_I_Rise_front_cover%2C_1978_first_edition.jpg",
     },
     {
       id: 11,
+      category: "Poems",
+      title: "Milk and honey",
+      author: "Rupi Kaur",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLfvpmL3VjOvcIYSb9bwhEtvOKRrIxnVDJuQ&s",
+    },
+    {
+      id: 12,
+      category: "Poems",
+      title: "The Sun and Her Flowers",
+      author: "Rupi Kaur",
+      imageUrl:
+        "https://cdn.shopify.com/s/files/1/1331/9925/files/0620619260345_000_b_large.jpg?v=1544024393",
+    },
+    {
+      id: 13,
+      category: "Poems",
+      title: "Love Is a Dog from Hell",
+      author: "Charles Bukowski",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaEVHSj4oJoeLWBH-d1vqr0Ubyr7d_6kUMzQ&s",
+    },
+    {
+      id: 14,
+      category: "Poems",
+      title: "Factotum",
+      author: "Charles Bukowski",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/en/0/05/Factotum.jpg",
+    },
+
+    // Music
+    {
+      id: 15,
       category: "Music",
       title: "Thriller",
       artist: "Michael Jackson",
       spotifyUrl: "#",
+      imageUrl: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2",
     },
     {
-      id: 12,
+      id: 16,
+      category: "Music",
+      title: "Kind of Blue",
+      artist: "Miles Davis",
+      spotifyUrl: "#",
+      imageUrl: "https://images.unsplash.com/photo-1511376777868-611b54f68947",
+    },
+    {
+      id: 17,
+      category: "Music",
+      title: "OK Computer",
+      artist: "Radiohead",
+      spotifyUrl: "#",
+      imageUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
+    },
+
+    // Documentaries
+    {
+      id: 18,
+      category: "Documentaries",
+      title: "Planet Earth",
+      director: "Alastair Fothergill",
+      imageUrl: "https://images.unsplash.com/photo-1606788075760-9fd8b0c1f4f6",
+    },
+
+    // Podcasts
+    {
+      id: 19,
+      category: "Podcasts",
+      title: "The Daily",
+      producer: "The New York Times",
+      podcastUrl: "#",
+      imageUrl: "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb",
+    },
+
+    {
+      id: 21,
       category: "Documentaries",
       title: "Cosmos",
       director: "Ann Druyan",
+      imageUrl: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
     },
     {
-      id: 13,
+      id: 22,
       category: "Podcasts",
       title: "Radiolab",
       producer: "WNYC Studios",
       podcastUrl: "#",
+      imageUrl: "https://images.unsplash.com/photo-1581091012184-d8f91b1132ce",
     },
-    // ... more resources
   ];
 
   const categories = ["Books", "Poems", "Music", "Documentaries", "Podcasts"];
@@ -106,7 +208,7 @@ const Backstage = () => {
   );
 
   return (
-    <section className="min-h-screen py-20">
+    <section className="min-h-screen px-4 py-20">
       <div className="container mx-auto py-10">
         <h1 className="text-3xl font-semibold mb-6">Backstage</h1>
         <p className="text-gray-700 dark:text-gray-300 mb-4">
@@ -166,42 +268,60 @@ const Backstage = () => {
           {filteredResources.map((resource) => (
             <div
               key={resource.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden"
             >
-              <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
-                {resource.title}
-              </h3>
-              {resource.author && (
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                  By {resource.author}
-                </p>
+              {resource.imageUrl && (
+                <img
+                  src={resource.imageUrl}
+                  alt={resource.title}
+                  className="p-2 w-full h-50 object-contain bg-white"
+                />
               )}
-              {resource.artist && (
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                  By {resource.artist}
-                </p>
-              )}
-              {resource.spotifyUrl && (
-                <a
-                  href={resource.spotifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-indigo-500 hover:underline text-sm"
-                >
-                  Listen on Spotify
-                </a>
-              )}
-              {resource.podcastUrl && (
-                <a
-                  href={resource.podcastUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-indigo-500 hover:underline text-sm"
-                >
-                  Listen to Podcast
-                </a>
-              )}
-              {/* more details/actions to be added here */}
+              <div className="p-4">
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                  {resource.title}
+                </h3>
+                {resource.author && (
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                    By {resource.author}
+                  </p>
+                )}
+                {resource.artist && (
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                    By {resource.artist}
+                  </p>
+                )}
+                {resource.director && (
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                    Directed by {resource.director}
+                  </p>
+                )}
+                {resource.producer && (
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                    Produced by {resource.producer}
+                  </p>
+                )}
+                {resource.spotifyUrl && (
+                  <a
+                    href={resource.spotifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-500 hover:underline text-sm"
+                  >
+                    Listen on Spotify
+                  </a>
+                )}
+                {resource.podcastUrl && (
+                  <a
+                    href={resource.podcastUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-500 hover:underline text-sm"
+                  >
+                    Listen to Podcasts
+                  </a>
+                )}
+              </div>
             </div>
           ))}
           {filteredResources.length === 0 && (
