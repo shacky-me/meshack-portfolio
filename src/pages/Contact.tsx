@@ -24,6 +24,10 @@ const Contact = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setSubmissionStatus("sending");
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
 
     try {
       const response = await fetch("/api/send-email", {
