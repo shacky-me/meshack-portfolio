@@ -85,7 +85,7 @@ const cardVariants = {
 const Projects = () => {
   return (
     <motion.section
-      className="min-h-screen py-20"
+      className="min-h-screen px-4 py-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
