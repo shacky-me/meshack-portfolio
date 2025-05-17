@@ -45,8 +45,6 @@ const Contact = () => {
       setMessage("");
     } catch (error) {
       console.error("EmailJS error:", error);
-      alert("Check the console for detailed EmailJS error info.");
-      console.error("EmailJS error:", error);
       setSubmissionStatus("error");
     }
   };
