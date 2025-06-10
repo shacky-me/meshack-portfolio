@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -14,6 +14,16 @@ const Contact = () => {
   const [submissionStatus, setSubmissionStatus] = useState<
     "sending" | "success" | "error" | null
   >(null);
+
+  // Auto-hide success message after 4 seconds
+  useEffect(() => {
+    if (submissionStatus === "success") {
+      const timer = setTimeout(() => {
+        setSubmissionStatus(null);
+      }, 4000);
+      return () => clearTimeout(timer); // cleanup
+    }
+  }, [submissionStatus]);
 
   const handleButtonClick = () => {
     setIsDirectEmail(true);

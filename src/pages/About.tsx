@@ -20,9 +20,25 @@ const About = () => {
     "Restful Services",
     "Sass",
   ];
-  const backendSkills = ["Python", "Dart", "Flutter"];
+  const backendSkills = [
+    "Python",
+    "Express.jS",
+    "Node.js",
+    "MongoDB",
+    "Dart(still learning)",
+    "Flutter(still learning)",
+  ];
   const pmSkills = ["Trello", "Jira"];
   const tools = ["Git", "GitHub", "Docker", "Vercel", "Netlify"];
+  const designSkills = [
+    "Figma",
+    "Miro",
+    "Framer",
+    "Canva",
+    "Materialize",
+    "Concepts",
+    "Balsamiq",
+  ];
 
   return (
     <section
@@ -137,6 +153,20 @@ const About = () => {
               <CardContent className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
                   <Badge key={tool}>{tool}</Badge>
+                ))}
+              </CardContent>
+            </Card>
+            <Card className="bg-white/80 dark:bg-slate-800/80 shadow-md backdrop-blur-sm">
+              <CardHeader className="pb-2">
+                <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  UI/UX Design
+                </h4>
+              </CardHeader>
+              <CardContent className="flex flex-wrap gap-2">
+                {designSkills.map((design) => (
+                  <Badge key={design} variant="outline">
+                    {design}
+                  </Badge>
                 ))}
               </CardContent>
             </Card>
