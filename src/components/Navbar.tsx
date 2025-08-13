@@ -170,7 +170,7 @@ const Navbar = () => {
               </button>
             ))}
             <a
-              href="https://drive.google.com/file/d/1l3homNnhbsP-_VWLmbOff-BudVkz7QzK/view?usp=sharing"
+              href="https://drive.google.com/file/d/1iAbzUCo5EAxLI03BGnMLV1Xzp1mqkdm_/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-transparent border-2 border-[#032218] text-[#014d40] font-bold px-2 py-1 rounded-md hover:border-[#41adad] hover:text-[#3a5e68] transition duration-500 ease-in"
